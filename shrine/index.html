@@ -7,6 +7,11 @@
                 return str.length < max ? pad(padding + str, max, padding) : str;
             }
 
+            window.onclick = function()
+            {
+                location.reload();
+            }
+
             window.onload = function() 
             {
                 var shrineImageNumber = Math.floor(Math.random() * 27 + 1);
