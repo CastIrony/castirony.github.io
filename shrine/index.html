@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <script type="text/javascript">
+
+            function pad(str, max, padding) 
+            {
+                return str.length < max ? pad(padding + str, max, padding) : str;
+            }
+
+            window.onload = function() 
+            {
+                var shrineImageNumber = Math.floor(Math.random() * 27 + 1);
+
+                document.body.style.backgroundImage = "url('./i/shrine" + pad(shrineImageNumber.toString(), 5, "0") + ".jpg')";
+
+                var firstSyllables  = [ "a", "ag", "akh", "au", "aug", "ba", "bosh", "cha", "chi", "cho", "chu", "da", "dah", "dan", "di", "dow", "dun", "gee", "geh", "go", "ha", "hah", "he", "hi", "ish", "ja", "je", "jee", "ji", "jinn", "jo", "ka", "kach", "kah", "kai", "kam", "kat", "kay", "ke", "kee", "keh", "keo", "ko", "koh", "kor", "koth", "kuh", "kuhn", "la", "lak", "lan", "lo", "ma", "mah", "mez", "mi", "mir", "mo", "mogg", "mon", "mu", "muhl", "my", "na", "nah", "naw", "ne", "ni", "nit", "no", "noh", "o", "oah", "om", "oo", "ozz", "pu", "qa", "qe", "qu", "quo", "ra", "rah", "re", "ri", "rin", "ro", "rok", "ru", "ruc", "sa", "sah", "sha", "shaz", "she", "sheh", "shen", "sho", "si", "soh", "su", "ta", "tah", "tak", "te", "tho", "to", "toh", "tok", "torr", "tu", "tut", "u", "va", "van", "ve", "voo", "wa", "wah", "wan", "war", "ya", "yah", "yo", "yoh", "zal", "ze", "zo", "zu", "zun" ];
+                var secondSyllables = [ "a", "ae", "ag", "ahm", "aj", "am", "an", "as", "ba", "co", "da", "dajj", "deh", "e", "ee", "eer", "eg", "eh", "ek", "el", "em", "et", "ez", "fi", "ga", "gah", "go", "gu", "ha", "hu", "i", "im", "jah", "ji", "ka", "kagh", "kah", "kar", "ke", "kee", "ki", "ko", "la", "lan", "loh", "loo", "ma", "mi", "mo", "mut", "na", "nai", "nath", "no", "o", "og", "oh", "os", "qa", "qo", "quot", "ra", "rae", "rah", "ree", "ro", "rog", "sa", "sae", "sah", "sas", "say", "sh", "sho", "so", "ss", "su", "ta", "tah", "tak", "tan", "tha", "to", "toh", "tu", "u", "ug", "vo", "wa", "wai", "wo", "wog", "ya", "yaa", "ym", "za", "zo" ];
+                var thirdSyllables  = [ "ag", "agh", "ar", "da", "ka", "ne", "sa", "wa", "z" ];
+
+                var syllableArrays = [ firstSyllables, secondSyllables, thirdSyllables ];
+
+                var shrineCount = 1;
+
+                for(var shrineIndex = 0; shrineIndex < shrineCount; shrineIndex++) 
+                {
+                    var shrineName = ""
+
+                    for(var wordIndex = 0; wordIndex < 2; wordIndex++) 
+                    {
+                        var syllableRandomNumber = Math.random();
+                        var syllableCount;
+
+                        if(syllableRandomNumber < 0.25)
+                        {
+                            syllableCount = 1;
+                        }
+                        else if( syllableRandomNumber < 0.95)
+                        {
+                            syllableCount = 2;
+                        }
+                        else
+                        {
+                            syllableCount = 3;
+                        }
+
+                        for(var syllableIndex = 0; syllableIndex < syllableCount; syllableIndex++) 
+                        {
+                            var syllableArray = syllableArrays[syllableIndex];
+                            var syllable = syllableArray[Math.floor(Math.random() * syllableArray.length)];
+
+                            if(syllableIndex > 0 && Math.random() < 0.09)
+                            {
+                                shrineName = shrineName + "'";
+                            }
+
+                            shrineName = shrineName + syllable;
+                        }
+
+                        shrineName = shrineName + " ";
+                    }
+
+                    shrineName = shrineName + "Shrine";
+
+                    var capitalizedShrineName = shrineName.split(' ').map(i => i[0].toUpperCase() + i.substr(1).toLowerCase()).join(' ')
+
+                    var heading = document.createElement("h1");
+                    heading.appendChild(document.createTextNode(capitalizedShrineName));
+                    document.body.appendChild(heading);
+                }
+            }
+        </script>
+
+        <!-- 
+
+        Looking for the awesome Zelda font? 
+        Check out http://artsyomni.com/hyliaserif by @artsyomni
+        
+        -->
+
+        <style type="text/css">
+            @font-face 
+            {
+                font-family: 'hylia-serif';
+                font-style: normal;
+                font-weight: 100;
+                src: url(./HyliaSerifPrototype-Regular.woff) format("woff"); 
+            }
+
+            h1
+            {
+                color: #fff;
+                font-size: 5vw;
+                font-family: 'hylia-serif';
+                font-weight: normal;
+                letter-spacing: .02em;
+                margin:0;
+            }
+
+            body
+            {
+                background-position: bottom center;
+                background-color: #222;
+                background-size: cover;
+                align-items: flex-end; 
+                display: flex; 
+                justify-content: space-between; 
+            }
+        </style>
+    </head>
+    <body>
+        
+    </body>
+</html>
